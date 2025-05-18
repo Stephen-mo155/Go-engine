@@ -37,7 +37,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     start := time.Now()
 
     w.WriteHeader(http.StatusOK)
-    fmt.Fprintf(w, "1 %s", r.URL.Path[1:])
+    fmt.Fprintf(w, "2 %s", r.URL.Path[1:])
 
     duration := time.Since(start).Seconds()
     labels := prometheus.Labels{
