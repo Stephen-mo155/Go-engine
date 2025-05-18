@@ -1,8 +1,9 @@
-name: Build and Push Go Engine to ECR
+name: Build and Push Tagged Go Engine to ECR
 
 on:
   push:
-    branches: [main]
+    tags:
+      - 'v*' 
 
 jobs:
   build-and-push:
@@ -10,7 +11,7 @@ jobs:
 
     env:
       ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-      IMAGE_TAG: latest
+      IMAGE_TAG: ${{ github.ref_name }}  
 
     steps:
       - name: Checkout Code
